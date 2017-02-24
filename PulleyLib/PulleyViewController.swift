@@ -187,7 +187,8 @@ open class PulleyViewController: UIViewController {
     }
     
     /// The background visual effect layer for the drawer. By default this is the extraLight effect. You can change this if you want, or assign nil to remove it.
-    public var drawerBackgroundVisualEffectView: UIVisualEffectView? = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight)) {
+	
+    public var drawerBackgroundVisualEffectView: UIView? {
         willSet {
             drawerBackgroundVisualEffectView?.removeFromSuperview()
         }
@@ -340,7 +341,17 @@ open class PulleyViewController: UIViewController {
     
     override open func loadView() {
         super.loadView()
-        
+		
+		
+		if #available(iOS 8.0, *) {
+			drawerBackgroundVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+		} else {
+			let v = UIView()
+			v.backgroundColor = UIColor.white
+			v.alpha = 0.95
+			drawerBackgroundVisualEffectView = v
+		}
+		
         // IB Support
         if primaryContentContainerView != nil
         {

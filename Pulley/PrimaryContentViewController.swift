@@ -15,15 +15,27 @@ class PrimaryContentViewController: UIViewController {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var controlsContainer: UIView!
     @IBOutlet var temperatureLabel: UILabel!
+	@IBOutlet var topEffectView: UIView!
     
     @IBOutlet var temperatureLabelBottomConstraint: NSLayoutConstraint!
     
     fileprivate let temperatureLabelBottomDistance: CGFloat = 8.0
-    
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+		
+		if #available(iOS 8.0, *) {
+			let e = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+			e.frame = topEffectView.bounds
+			e.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+			topEffectView.addSubview(e)
+		} else {
+			topEffectView.backgroundColor = UIColor.white
+			topEffectView.alpha = 0.95
+		}
+		
+		
         controlsContainer.layer.cornerRadius = 10.0
         temperatureLabel.layer.cornerRadius = 7.0
     }

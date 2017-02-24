@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -68,19 +69,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b7G-0X-JPQ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="333.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="334"/>
                             </mapView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D1V-M1-B9h">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjM-27-wFf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Cyw-pD-dsX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="Ngx-Aj-MG5"/>
+                                    <constraint firstAttribute="height" constant="20" id="rZj-Ek-e7z"/>
                                 </constraints>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4A-9H-sT4">
                                 <rect key="frame" x="323" y="28" width="44" height="74"/>
                                 <subviews>
@@ -131,14 +128,14 @@
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="CdD-I4-t3B" secondAttribute="bottom" constant="8" id="73I-zu-uZx"/>
                             <constraint firstAttribute="trailing" secondItem="S4A-9H-sT4" secondAttribute="trailing" constant="8" id="7IE-0v-gtr"/>
-                            <constraint firstItem="D1V-M1-B9h" firstAttribute="leading" secondItem="wsZ-C5-y4c" secondAttribute="leading" id="8gK-mG-aI1"/>
                             <constraint firstAttribute="bottomMargin" secondItem="b7G-0X-JPQ" secondAttribute="bottom" id="C7e-Y2-5jG"/>
                             <constraint firstItem="b7G-0X-JPQ" firstAttribute="leading" secondItem="wsZ-C5-y4c" secondAttribute="leading" id="KA3-oe-Y0V"/>
-                            <constraint firstAttribute="topMargin" secondItem="D1V-M1-B9h" secondAttribute="top" id="MaD-tO-6jk"/>
-                            <constraint firstAttribute="trailing" secondItem="D1V-M1-B9h" secondAttribute="trailing" id="SHa-ls-4Fe"/>
+                            <constraint firstItem="rjM-27-wFf" firstAttribute="leading" secondItem="wsZ-C5-y4c" secondAttribute="leading" id="Osl-ry-MYQ"/>
                             <constraint firstAttribute="topMargin" secondItem="b7G-0X-JPQ" secondAttribute="top" id="U8h-6g-ecD"/>
-                            <constraint firstItem="S4A-9H-sT4" firstAttribute="top" secondItem="D1V-M1-B9h" secondAttribute="bottom" constant="8" id="hBy-sQ-YGE"/>
+                            <constraint firstItem="S4A-9H-sT4" firstAttribute="top" secondItem="rjM-27-wFf" secondAttribute="bottom" constant="8" id="hHo-Qk-t9r"/>
+                            <constraint firstAttribute="trailing" secondItem="rjM-27-wFf" secondAttribute="trailing" id="nKh-Fh-Pef"/>
                             <constraint firstAttribute="trailing" secondItem="CdD-I4-t3B" secondAttribute="trailing" constant="8" id="oG7-uX-jCF"/>
+                            <constraint firstItem="rjM-27-wFf" firstAttribute="top" secondItem="wsZ-C5-y4c" secondAttribute="top" id="oQV-Ix-VHf"/>
                             <constraint firstAttribute="trailing" secondItem="b7G-0X-JPQ" secondAttribute="trailing" id="rwJ-6X-bB2"/>
                         </constraints>
                     </view>
@@ -147,6 +144,7 @@
                         <outlet property="mapView" destination="b7G-0X-JPQ" id="4t8-Om-8fj"/>
                         <outlet property="temperatureLabel" destination="CdD-I4-t3B" id="wiH-6U-GXK"/>
                         <outlet property="temperatureLabelBottomConstraint" destination="73I-zu-uZx" id="aUz-kZ-zGM"/>
+                        <outlet property="topEffectView" destination="rjM-27-wFf" id="bCu-LG-fF3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVP-c3-ybp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -202,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="JBT-De-7Vh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="343.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="344"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMs-NQ-cJu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
@@ -215,7 +213,7 @@
                                                 </connections>
                                             </searchBar>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2S4-TW-Cpq">
-                                                <rect key="frame" x="169.5" y="8" width="36" height="5"/>
+                                                <rect key="frame" x="170" y="8" width="36" height="5"/>
                                                 <color key="backgroundColor" red="0.72941176470000002" green="0.72549019609999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="36" id="C9r-7j-1UB"/>
@@ -242,7 +240,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="njO-tj-uAV">
-                                        <rect key="frame" x="0.0" y="68" width="375" height="255.5"/>
+                                        <rect key="frame" x="0.0" y="68" width="375" height="256"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SampleCell" textLabel="lAS-Ae-0Vm" detailTextLabel="ehl-PZ-QRy" rowHeight="81" style="IBUITableViewCellStyleSubtitle" id="QrR-SM-B6h">

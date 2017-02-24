@@ -24,7 +24,16 @@ class PulleyPassthroughScrollView: UIScrollView {
         {
             if touchDel.shouldTouchPassthroughScrollView(scrollView: self, point: point)
             {
-                return touchDel.viewToReceiveTouch(scrollView: self).hitTest(touchDel.viewToReceiveTouch(scrollView: self).convert(point, from: self), with: event)
+				let x = touchDel.viewToReceiveTouch(scrollView: self)
+				if #available(iOS 8.0, *) {
+					let t = x.convert(point, from: self)
+					return touchDel.viewToReceiveTouch(scrollView: self).hitTest(t, with: event)
+				} else {
+					// Fallback on earlier versions
+					print("FAZER BRIDGE OBJC")
+					return super.hitTest(point, with: event)
+				}
+				
             }
         }
         
